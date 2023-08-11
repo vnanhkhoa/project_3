@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition
+        app:autoTransition="animateToEnd"
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="500" />
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/tv_label_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_download_status"
+            app:layout_constraintBottom_toTopOf="@id/tv_label_download_status"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/tv_file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_15"
+            android:alpha="0.0"
+            app:layout_constraintBottom_toTopOf="@id/tv_download_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_label_file_name" />
+
+        <Constraint
+            android:id="@id/tv_label_download_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            app:layout_constraintBottom_toTopOf="@id/btn_done"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/tv_download_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_15"
+            android:alpha="0.0"
+            app:layout_constraintBottom_toTopOf="@id/btn_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_label_download_status" />
+
+        <Constraint
+            android:id="@id/btn_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.0"
+            app:layout_constraintHeight_min="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint
+            android:id="@id/tv_label_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:alpha="1.0"
+            app:layout_constraintTop_toTopOf="@id/tv_file_name"
+            app:layout_constraintEnd_toEndOf="@id/tv_label_download_status"
+            app:layout_constraintBottom_toTopOf="@id/tv_label_download_status"
+            app:layout_constraintStart_toStartOf="@id/tv_label_download_status" />
+
+        <Constraint
+            android:id="@id/tv_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_15"
+            android:alpha="1.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_label_file_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/tv_label_download_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            android:alpha="1.0"
+            app:layout_constraintTop_toBottomOf="@id/tv_file_name"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/tv_download_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_15"
+            android:alpha="1.0"
+            app:layout_constraintStart_toEndOf="@id/tv_label_download_status"
+            app:layout_constraintTop_toTopOf="@id/tv_label_download_status"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint
+            android:id="@id/btn_done"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="1.0"
+            app:layout_constraintHeight_min="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+</MotionScene>
