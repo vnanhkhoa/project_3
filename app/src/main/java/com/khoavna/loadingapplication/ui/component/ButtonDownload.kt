@@ -51,13 +51,18 @@ class ButtonDownload @JvmOverloads constructor(
     private val progressAnimation by lazy {
         ValueAnimator.ofFloat(0f, 360f).apply {
             duration = 3000
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.RESTART
             interpolator = LinearInterpolator()
             addUpdateListener {
                 progress = it.animatedValue as Float
                 invalidate()
             }
             doOnStart { this@ButtonDownload.isEnabled = false }
-            doOnEnd { this@ButtonDownload.isEnabled = true }
+            doOnEnd {
+                this@ButtonDownload.isEnabled = true
+                progress = 0f
+            }
         }
     }
 
@@ -148,7 +153,10 @@ class ButtonDownload @JvmOverloads constructor(
     fun updateState(state: State) {
         if (this.state == state) return
         this.state = state
-        progressAnimation.start()
+        when(state) {
+            State.LOADING -> progressAnimation.start()
+            State.DEFAULT -> progressAnimation.cancel()
+        }
         invalidate()
     }
 }

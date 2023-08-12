@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.downloadState.observe(this) { state ->
             when (state) {
                 DownloadState.SUCCESSFUL, DownloadState.FAILED -> {
+                    if (binding.btnDownload.state == State.DEFAULT) return@observe
                     Toast.makeText(this, "Download Finished", Toast.LENGTH_SHORT).show()
                     binding.btnDownload.updateState(State.DEFAULT)
                     PendingIntentCompat.getActivity(
@@ -127,11 +128,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendNotification(pendingIntent: PendingIntent) =
         NotificationCompat.Builder(this, CHANNEL_ID).apply {
+            setSmallIcon(R.drawable.round_cloud_download_24)
             setContentTitle("Download $fileName")
             setContentText("Download $fileName is ${viewModel.downloadState.value!!.name.lowercase()}")
             setAutoCancel(true)
             setContentIntent(pendingIntent)
-            setSmallIcon(R.drawable.round_cloud_download_24)
+            addAction(0,"Show download status", pendingIntent)
             priority = NotificationCompat.PRIORITY_DEFAULT
             setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
 
